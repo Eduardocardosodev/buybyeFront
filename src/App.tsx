@@ -11,6 +11,7 @@ import LoginPage from './Pages/LoginPage';
 import { AuthContext, AuthProvider } from './context/auth/AuthProvider';
 import { ReactNode, useContext } from 'react';
 import HomePage from './Pages/HomePage';
+import EventPage from './Pages/EventPage';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -42,6 +43,14 @@ function App() {
             element={
               <Private>
                 <HomePage />
+              </Private>
+            }
+          />
+          <Route
+            path="/event/:id"
+            element={
+              <Private>
+                <EventPage />
               </Private>
             }
           />

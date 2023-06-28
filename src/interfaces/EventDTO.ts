@@ -5,11 +5,13 @@ export interface EventDTO {
   qtd_inscricao_sorteio: number | null;
   data_hr_prova: string;
   regras: {
+    id?: number | null;
     id_evento: number;
     qtd_corrida: number | null;
     soma_nivel: number | null;
   }[];
   premios: {
+    id?: number | null;
     id_evento: number;
     posicao: number | null;
     premio: string;

@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { EventDTO } from '../interfaces/EventDTO';
 import { RegraDTO } from '../interfaces/Regra';
 import { PremioDTO } from '../interfaces/Premio';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [events, setEvents] = useState<EventDTO[]>([]);
@@ -49,7 +50,6 @@ const HomePage = () => {
     })();
   }, []);
 
-  console.log(events);
   if (loading) {
     return <div>CAAREGANDO...</div>;
   }
@@ -119,7 +119,9 @@ const HomePage = () => {
         }}
       >
         {events.map((event: EventDTO) => (
-          <EventCard key={event.id} evento={event} />
+          <Link to={`/event/${event.id}`} key={event.id}>
+            <EventCard key={event.id} evento={event} />
+          </Link>
         ))}
       </div>
 
@@ -182,7 +184,7 @@ const HomePage = () => {
                 style={{ marginBottom: '10px', height: '25px' }}
               />
               <input
-                type="text"
+                type="datetime-local"
                 value={newEvent.data_hr_prova}
                 onChange={(e) =>
                   setNewEvent({
